@@ -4,15 +4,21 @@ var exec = require('child_process').exec;
 tmp.setGracefulCleanup();
 
 module.exports = function (grunt) {
-  grunt.registerMultiTask('typescript', '', function() {
+  grunt.registerMultiTask('typescript', 'Compile TypeScript sources to JavaScript', function() {
     var done = this.async();
-    var options = this.options();
+    var options = this.options({ compilerOptions: {} });
     var outDir = options.compilerOptions.outDir;
-    var baseDirFileIn = options.baseDir + '/.base.ts';
+    var baseDir = options.baseDir;
+    var isBaseDirFileNeeded = outDir && baseDir;
+    var baseDirFileIn = baseDir + '/.base.ts';
+    
+    if (!outDir && !options.compilerOptions.out) {
+      throw new Error('Either "outDir" or "out" compiler option must be specified!');
+    }
     
     var compilerExec = '"' + process.execPath + '" "' + __dirname + '/../node_modules/typescript/bin/tsc"';
     var compilerOptions = [];
-    var compilerFiles = this.filesSrc.concat(outDir ? [] : []);
+    var compilerFiles = this.filesSrc.concat(isBaseDirFileNeeded ? baseDirFileIn : []);
     
     for (var optionName in options.compilerOptions) {
       var optionValue = options.compilerOptions[optionName];
@@ -29,7 +35,7 @@ module.exports = function (grunt) {
         throw err;
       }
 
-      if (outDir) {
+      if (isBaseDirFileNeeded) {
         grunt.file.write(baseDirFileIn, '');
       }
       
@@ -38,7 +44,7 @@ module.exports = function (grunt) {
       grunt.log.writeln('Compiling ' + this.filesSrc.length + ' file' + (this.filesSrc.length > 1 ? 's' : '') + '.');
       
       exec(compilerExec + ' @"' + path + '"', function(error, stdout, stderr) {
-        if (outDir) {
+        if (isBaseDirFileNeeded) {
           grunt.file['delete'](baseDirFileIn);
         }
         
@@ -46,7 +52,7 @@ module.exports = function (grunt) {
           grunt.log.error(stderr);
           done(false);
         } else {
-          if (outDir) {
+          if (isBaseDirFileNeeded) {
             grunt.file['delete'](outDir + '/.base.js');
           }
           

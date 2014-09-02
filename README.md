@@ -5,7 +5,7 @@
 
 > TypeScript compiler
 
-TypeScript compiler.
+Simple TypeScript compiler. Use it if (like me) you think that other TypeScript grunt tasks are useless.
 
 
 ## Getting Started
@@ -28,17 +28,25 @@ Task targets, files and options may be specified according to the grunt [Configu
 
 ### Options
 
-#### TODO
+#### baseDir
 
-Type: TODO
+Type: String
 
-Default: TODO
+Default: Derived by TypeScript compiler
 
-TODO
+The base directory for TypeScript sources.
+
+#### compilerOptions
+
+Type: Object
+
+Default: Compiler defaults
+
+TypeScript compiler options.
 
 ### Usage Examples
 
-#### Example 1
+#### Redirect JavaScript structure to the directory
 
 ```js
 typescript: {
@@ -55,7 +63,7 @@ typescript: {
 }
 ```
 
-#### Example 2
+#### Concatenate and emit JavaScript to single file
 
 ```js
 typescript: {
@@ -73,5 +81,7 @@ typescript: {
 ```
 
 ## Release History
+ * **0.1.1** / 2014-09-02
+   * Improving.
  * **0.1.0** / 2014-09-02
    * First version.
