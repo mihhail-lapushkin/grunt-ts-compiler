@@ -1,0 +1,39 @@
+{
+  "name": "grunt-ts-compiler",
+  "description": "TypeScript compiler",
+  "version": "0.1.0",
+  "homepage": "https://github.com/mihhail-lapushkin/grunt-ts-compiler",
+  "author": {
+    "name": "Mihhail Lapushkin",
+    "email": "miha@smail.ee",
+    "url": "http://www.linkedin.com/in/mihhail"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mihhail-lapushkin/grunt-ts-compiler.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mihhail-lapushkin/grunt-ts-compiler/issues"
+  },
+  "licenses": [{
+    "type": "MIT",
+    "url": "https://github.com/mihhail-lapushkin/grunt-ts-compiler/blob/master/LICENSE-MIT"
+  }],
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "dependencies": {
+    "tmp": "0.0.24",
+    "typescript": "1.0.1"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.0"
+  },
+  "keywords": [
+    "gruntplugin",
+    "typescript",
+    "javascript",
+    "compiler",
+    "compile"
+  ]
+}
