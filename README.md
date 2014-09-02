@@ -5,7 +5,7 @@
 
 > TypeScript compiler
 
-Simple TypeScript compiler. Use it if (like me) you think that other TypeScript grunt tasks are useless.
+Simple TypeScript compiler. Use it if (like me) you think that other TypeScript Grunt tasks are useless.
 
 
 ## Getting Started
@@ -30,7 +30,7 @@ Task targets, files and options may be specified according to the grunt [Configu
 
 #### baseDir
 
-Type: String
+Type: `String`
 
 Default: Derived by TypeScript compiler
 
@@ -38,7 +38,7 @@ The base directory for TypeScript sources.
 
 #### compilerOptions
 
-Type: Object
+Type: `Object`
 
 Default: Compiler defaults
 
