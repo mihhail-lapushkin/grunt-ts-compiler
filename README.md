@@ -81,6 +81,8 @@ typescript: {
 ```
 
 ## Release History
+ * **0.1.2** / 2014-09-03
+   * Cleanup.
  * **0.1.1** / 2014-09-02
    * Improving.
  * **0.1.0** / 2014-09-02

@@ -1,7 +1,7 @@
 {
   "name": "grunt-ts-compiler",
   "description": "TypeScript compiler",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/mihhail-lapushkin/grunt-ts-compiler",
   "author": {
     "name": "Mihhail Lapushkin",
@@ -25,9 +25,6 @@
   "dependencies": {
     "tmp": "0.0.24",
     "typescript": "1.0.1"
-  },
-  "devDependencies": {
-    "grunt": "~0.4.0"
   },
   "keywords": [
     "gruntplugin",
