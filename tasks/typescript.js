@@ -7,10 +7,21 @@ module.exports = function (grunt) {
   grunt.registerMultiTask('typescript', 'Compile TypeScript sources to JavaScript', function() {
     var done = this.async();
     var options = this.options({ compilerOptions: {} });
+    var rootCompilerOptions = grunt.config.get('typescript.options.compilerOptions');
+
+    if (rootCompilerOptions) {
+      for (var optName in rootCompilerOptions) {
+        if (!options.compilerOptions[optName]) {
+          options.compilerOptions[optName] = rootCompilerOptions[optName];
+        }
+      }
+    }
+    
     var outDir = options.compilerOptions.outDir;
     var baseDir = options.baseDir;
     var isBaseDirFileNeeded = outDir && baseDir;
     var baseDirFileIn = baseDir + '/.base.ts';
+    var baseDirFileOut = outDir + '/.base.js';
     
     if (!outDir && !options.compilerOptions.out) {
       throw new Error('Either "outDir" or "out" compiler option must be specified!');
@@ -44,7 +55,7 @@ module.exports = function (grunt) {
       grunt.log.writeln('Compiling ' + this.filesSrc.length + ' file' + (this.filesSrc.length > 1 ? 's' : '') + '.');
       
       exec(compilerExec + ' @"' + path + '"', function(error, stdout, stderr) {
-        if (isBaseDirFileNeeded) {
+        if (isBaseDirFileNeeded && grunt.file.exists(baseDirFileIn)) {
           grunt.file['delete'](baseDirFileIn);
         }
         
@@ -52,8 +63,8 @@ module.exports = function (grunt) {
           grunt.log.error(stderr);
           done(false);
         } else {
-          if (isBaseDirFileNeeded) {
-            grunt.file['delete'](outDir + '/.base.js');
+          if (isBaseDirFileNeeded && grunt.file.exists(baseDirFileOut)) {
+            grunt.file['delete'](baseDirFileOut);
           }
           
           done();
