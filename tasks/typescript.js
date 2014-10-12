@@ -4,7 +4,7 @@ var exec = require('child_process').exec;
 tmp.setGracefulCleanup();
 
 module.exports = function (grunt) {
-  grunt.registerMultiTask('typescript', 'Compile TypeScript sources to JavaScript', function() {
+  grunt.registerMultiTask('typescript', 'TypeScript compiler', function() {
     var done = this.async();
     var options = this.options({ compilerOptions: {} });
     var rootCompilerOptions = grunt.config.get('typescript.options.compilerOptions');

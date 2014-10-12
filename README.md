@@ -5,7 +5,7 @@
 
 > TypeScript compiler
 
-Simple TypeScript compiler. Use it if (like me) you think that other TypeScript Grunt tasks are useless.
+Simple TypeScript compiler. Use it if (like me) you think that other TypeScript Grunt tasks are either useless, buggy or too complicated.
 
 
 ## Getting Started
@@ -81,6 +81,8 @@ typescript: {
 ```
 
 ## Release History
+ * **0.2.0** / 2014-10-12
+   * Always using `latest` typescript compiler.
  * **0.1.3** / 2014-09-17
    * Minor improvements.
  * **0.1.2** / 2014-09-03
